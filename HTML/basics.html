@@ -133,17 +133,73 @@ Page Layout Techniques:
     <h2>FORMS</h2>
     <!--Used to collect data from user-->
 
+    <form>
     Input<!--take any form of data as input-->
     <input type="text" placeholder="Enter Name">
+    <input type="email" placeholder="Enter Email">
+    <input type="password" placeholder="Enter Password">
 
-    Label<!--links the -->
+    Label<!--links name/label to that form/input data form --><br>
+    <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+
+        <!--radio: helps in select only one option-->
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male"> Male
+        <input type="radio" id="female" name="gender" value="female"> Female
+        <br><br>
+
+        <!--checkbox: helps in select more than one options-->
+        <label for="hobbies">Hobbies:</label>
+        <input type="checkbox" id="reading" name="hobbies" value="reading"> Reading
+        <input type="checkbox" id="sports" name="hobbies" value="sports"> Sports
+        <input type="checkbox" id="music" name="hobbies" value="music"> Music
+        <br><br>
+
+        <!--select & option: helps in selecting only from provided options -->
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+            <option value="india">India</option>
+            <option value="canada">Canada</option>
+        </select>
+        <br><br>
+
+        <!--message from user with range of data to take as input-->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" cols="30"></textarea>
+        <br><br>
+
+
+        <br>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <hr>
+
     
-
-    <form>
 
 
     </form>
 
     
+    <!--iframe Tag:To show website inside website-->
+    <!--very cool useful feature to show youtube video or wikipedia info-->
+
+    <iframe src="link"> Link</iframe><br>
+    
+
+    <!--play video in our website-->
+    <video src="video.mp4" width="320" height="240" controls>Video</video>
 </body>
 </html>
