@@ -18,4 +18,4 @@ This project contains an HTML file (`basics.html`) that provides an introduction
 - Forms (`<form>`, `<input>`, `<label>`, `<select>`, `<textarea>`)  
 - Embedding multimedia (`<video>`, `<iframe>`)
 
-- <hr>
+<hr>
