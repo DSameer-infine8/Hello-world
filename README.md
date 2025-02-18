@@ -2,11 +2,13 @@
 
 
 <hr>
-# Basic HTML Notes  
+
+# HTML
+## Basic HTML Notes  
 
 This project contains an HTML file (`basics.html`) that provides an introduction to essential HTML elements, including headings, paragraphs, lists, tables, forms, and multimedia integration.  
 
-## Features  
+### Features  
 
 - HTML Boilerplate structure  
 - Headings (`<h1>` to `<h6>`)  
