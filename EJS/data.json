@@ -1,0 +1,90 @@
+{
+  "cats": {
+    "name": "cats",
+    "followers": 2500,
+    "following": 55,
+    "posts": [
+      {
+        "images": "https://cdn2.thecatapi.com/images/bpc.jpg",
+        "likes": 180,
+        "comments": 22
+      },
+      {
+        "images": "https://cdn2.thecatapi.com/images/6qi.jpg",
+        "likes": 155,
+        "comments": 87
+      },
+      {
+        "images": "https://cdn2.thecatapi.com/images/4uh.jpg",
+        "likes": 209,
+        "comments": 97
+      }
+    ]
+  },
+  "dogs": {
+    "name": "dogs",
+    "followers": 3120,
+    "following": 78,
+    "posts": [
+      {
+        "images": "https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg",
+        "likes": 212,
+        "comments": 45
+      },
+      {
+        "images": "https://images.squarespace-cdn.com/content/v1/54822a56e4b0b30bd821480c/51fe71a3-cb12-4ac2-882f-45955401dd53/Golden+Retrievers+dans+pet+care.jpeg?format=2500w",
+        "likes": 173,
+        "comments": 30
+      },
+      {
+        "images": "https://images.squarespace-cdn.com/content/v1/54822a56e4b0b30bd821480c/1f84c55a-7d8e-4edd-9b80-16cc624b5af9/poodles+dans+pet+care.jpeg?format=2500w",
+        "likes": 198,
+        "comments": 66
+      }
+    ]
+  },
+  "birds": {
+    "name": "birds",
+    "followers": 1890,
+    "following": 40,
+    "posts": [
+      {
+        "images": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Bird_of_paradise_flower_and_bird.jpg",
+        "likes": 134,
+        "comments": 18
+      },
+      {
+        "images": "https://upload.wikimedia.org/wikipedia/commons/2/25/Rainbow_lorikeet.jpg",
+        "likes": 175,
+        "comments": 39
+      },
+      {
+        "images": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Peregrine_Falcon.jpg",
+        "likes": 201,
+        "comments": 54
+      }
+    ]
+  },
+  "rabbits": {
+    "name": "rabbits",
+    "followers": 950,
+    "following": 23,
+    "posts": [
+      {
+        "images": "https://upload.wikimedia.org/wikipedia/commons/4/45/Cute_bunny.jpg",
+        "likes": 120,
+        "comments": 10
+      },
+      {
+        "images": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Oryctolagus_cuniculus_Rcdo.jpg",
+        "likes": 147,
+        "comments": 25
+      },
+      {
+        "images": "https://upload.wikimedia.org/wikipedia/commons/6/65/Rabbit_in_montana.jpg",
+        "likes": 132,
+        "comments": 12
+      }
+    ]
+  }
+}

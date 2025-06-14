@@ -8,8 +8,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "description": "Sameer",
   "dependencies": {
+    "@scaleway/random-name": "^5.1.1",
     "ejs": "^3.1.10",
     "express": "^5.1.0"
   }
