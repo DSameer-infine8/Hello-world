@@ -35,10 +35,18 @@ app.get("/",(req, res)=>{
     res.render("home.ejs");
 });
 
+app.get("/posts/new",(req, res)=> {
+    res.render("new.ejs");
+});
+
 app.get("/posts",(req, res)=>{
     res.render("posts.ejs", {posts});
 });
 
+app.post("/posts", (res,req)=>{
+    console.log(req.body);
+    res.setEncoding("post add working");
+}); 
 app.listen(port , ()=>{
     console.log(`Server is running on port:${port}`);
 })
