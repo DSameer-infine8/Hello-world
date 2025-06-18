@@ -27,6 +27,11 @@
             <h3 > Content: <%= post.content %></h3>
             <h5>Likes:<%= post.likes %></h5><h5>id:<%= post.id %></h5>
             <button><a href="http://localhost:8080/posts/<%= post.id %>">See in detail</a></button>
+            <button><a href="http://localhost:8080/posts/<%= post.id %>/edit">Edit Post</a></button>
+
+            <form method="post" action="/posts/<%= post.id %>?_method=DELETE">
+                <button>Delete Post</button>
+            </form>
         </div>
     <% } %>
     <br><br>

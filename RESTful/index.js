@@ -1,15 +1,19 @@
-import express from "express";
-import path from "path";
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import { v4 as uuidv4 } from 'uuid';
+const express = require("express");
+const path = require("path");
+const { v4: uuidv4 } = require("uuid");
+let methodOverride = require('method-override')
 
 const app = express();
 const port = 8080;
 
-// To replicate __dirname in ES module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+app.use(methodOverride('_method'));
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 
 let posts = [
     {
@@ -32,12 +36,6 @@ let posts = [
     }
 ];
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 app.get("/", (req, res) => {
     res.render("home.ejs");
@@ -66,6 +64,26 @@ app.post("/posts", (req, res) => {
     posts.push({ user, id, content, likes });
     res.redirect("/posts");
 });
+app.get("/posts/:id/edit", (req,res)=>{
+    let { id } = req.params;
+    let post = posts.find((p) => id === p.id);
+    res.render("edit.ejs", {post});
+});
+
+app.patch("/posts/:id",(req, res)=>{
+    let { id } = req.params;
+    let newContent = req.body.content;
+    let post = posts.find((p) => id === p.id);
+    post.content = newContent;
+    res.redirect("/posts");
+});
+
+app.delete("/posts/:id",(req, res)=>{
+    let { id } = req.params;
+    posts = posts.filter((p) => id !== p.id);
+    res.redirect("/posts");
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
