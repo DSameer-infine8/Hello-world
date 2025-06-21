@@ -4,6 +4,7 @@ const mysql = require("mysql2");
 const app = express();
 const path = require("path");
 const methodOverride = require('method-override');
+const { v4: uuidv4 } = require('uuid');
 
 
 const port = 8080;
@@ -154,7 +155,69 @@ app.patch("/user/:id" , (req, res)=>{
   } catch (err) {
     console.log(err);
   }
+});
+
+
+//Add New User Route
+app.get("/new", (req, res)=>{
+  res.render("new.ejs");
+});
+
+app.post("/new",(req,res)=>{
+  let {name, password, email} = req.body;
+  let id = uuidv4();
+  let q = `INSERT INTO USER (id, name, email, password) VALUES ('${id}','${name}' ,'${email}' ,'${password}');`
+   try {
+    connection.query(q, (err, result)=>{
+      if(err) throw err;
+      console.log("Successfully ADDED USER")
+      res.redirect("/user");
+    })
+  } catch (err) {
+    console.log(err);
+  }
 })
+
+
+//Delete User Route
+app.get("/user/:id/delete", (req,res)=>{
+  let id = req.params.id;
+  let q= `SELECT * FROM USER WHERE id='${id}'`
+  try {
+    connection.query(q, (err, result)=>{
+      if(err) throw err;
+      let userDetail = result[0];
+      res.render("delete.ejs",{userDetail});
+    })
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.delete("/user/:id/delete" , (req, res)=>{
+  let id = req.params.id;
+  let {email, password} = req.body;
+  let q= `SELECT * FROM USER WHERE id='${id}'`
+  try {
+    connection.query(q, (err, result)=>{
+      if(err) throw err;
+      let userDetail = result[0];
+      let q = `DELETE FROM USER WHERE id='${id}'`;
+      if(email != userDetail.email && password != userDetail){
+        res.status(400).send("Invalid Credentials");
+      }else{
+        connection.query(q, (err, result)=>{
+          if(err) throw err;
+          console.log("Successfully DELETED USER");
+          res.redirect("/user");
+        })
+      }
+    })
+  } catch (err) {
+    console.log(err);
+  }
+})
+
 
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`);
