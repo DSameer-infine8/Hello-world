@@ -24,10 +24,6 @@ app.get("/chat",async (req,res)=>{
     res.render("index.ejs", {chats})
 });
 
-app.get("/",(req,res)=>{
-    console.log(chat.find());
-    res.status(200).send("Welcome to chat app!");
-});
 
 app.post("/chat",(req, res)=>{
     let {from , to , msg} = req.body;
@@ -43,6 +39,29 @@ app.post("/chat",(req, res)=>{
     }).catch((err)=>{
         console.log(err);
     });
+    res.redirect("/chat");
+});
+
+app.delete("/chat/:id",(req,res)=>{
+    let { id} = req.params;
+    Chat.deleteOne({_id: id}).then((res)=>{
+        console.log("chat deleted");   
+    }).catch((err)=>{
+        console.log(err);
+    });
+    res.redirect("/chat");
+});
+
+app.get("/chat/:id/edit",async (req,res)=>{
+    let {id} = req.params;
+    let chat = await Chat.findOne({_id: id});
+    res.render("edit.ejs", {id, chat})
+});
+
+app.patch("/chat/:id/edit", async (req,res)=>{
+    let {id} = req.params;
+    let {msg} = req.body;
+    await Chat.findOneAndUpdate({_id: id}, {msg: msg});
     res.redirect("/chat");
 })
 

@@ -17,6 +17,14 @@
                 </div>
                 <h4 class="message"><%= chat.msg %></h4>
                 <p class="date"><%= chat.date %></p>
+                <div class="btn">
+                <form method="get" action="/chat/<%= chat._id %>/edit">
+                    <button >EDIT</button>
+                </form>
+                <form method="POST" action="/chat/<%= chat._id %>?_method=DELETE">
+                    <button >Delete</button>
+                </form>
+                </div>
             </div>
         <% } %>
     </div>

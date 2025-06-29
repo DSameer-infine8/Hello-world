@@ -76,3 +76,10 @@ body{
 button{
     width: 60px;
 }
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
