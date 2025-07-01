@@ -1,5 +1,12 @@
 const express = require("express");
 const app = express();
+
+//socket.io Start
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server); // Initialize Socket.io
+
 const path =  require("path");
 const mongoose = require("mongoose");
 const Chat = require("./models/chat.js");
@@ -25,7 +32,7 @@ app.get("/chat",async (req,res)=>{
 });
 
 
-app.post("/chat",(req, res)=>{
+app.post("/chat",async(req, res)=>{
     let {from , to , msg} = req.body;
     let newChat = new Chat({
         from: from,
@@ -34,11 +41,19 @@ app.post("/chat",(req, res)=>{
         create_at: new Date()
 
     });
-    newChat.save().then((res)=>{
-        console.log("chat saved");
-    }).catch((err)=>{
-        console.log(err);
-    });
+
+    const savedChat = await newChat.save();
+
+
+// 👇 Send _id with the message so buttons work
+  io.emit("newMessage", {
+    _id: savedChat._id,
+    from,
+    to,
+    msg,
+    date: savedChat.create_at,
+  });
+   
     res.redirect("/chat");
 });
 
@@ -65,6 +80,4 @@ app.patch("/chat/:id/edit", async (req,res)=>{
     res.redirect("/chat");
 })
 
-app.listen(port,()=>{
-    console.log(`server is running on port ${port}`);
-});
+server.listen(port, () => console.log(`Running on ${port}`));
