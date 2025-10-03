@@ -1,0 +1,28 @@
+.pro{
+    position: relative;
+    border: 2px solid gold;
+    padding: 0px 10px 20px 10px;
+    width: 200px;
+    border-radius: 2rem;
+}
+
+.oldPrize{
+    text-decoration: line-through;
+}
+
+.details{
+    padding-left: 10px;
+}
+
+.prizes{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: gold;
+    bottom: 0px;
+    width: 100%;
+    left: 0;
+    color: black;
+    border-radius: 0 0 2rem 2rem;
+}
